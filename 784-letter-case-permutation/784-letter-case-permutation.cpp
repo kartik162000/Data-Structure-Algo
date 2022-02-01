@@ -19,7 +19,7 @@ public:
                 }
                 vec.push_back(s);
                 solve(s,vec,i+1);
-            if(isalpha(s[i]))
+            if(isalpha(s[i]))            //we have to do this for backtracking suppose a character gets converted to caps so                                                        //we need to again convert it to small case if it is alphabet
                 if(isupper(s[i]))
                     s[i]=tolower(s[i]);
                 else
