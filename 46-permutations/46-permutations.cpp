@@ -19,8 +19,10 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
     vector<vector<int>> vec;
     help(vec,nums,0);
-       // sort(vec.begin(), vec.end());
-// vec.erase(unique(vec.begin(), vec.end()), vec.end());
      return vec;   
     }
 };
+
+
+
+/*  stl trick function next_permuation(nums.begin(),nums.end()) */
