@@ -9,29 +9,44 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// class Solution {
+// public:
+//     void help(TreeNode *root,int low,int high,int &sum)
+//     {
+//         if(root==NULL)
+//             return;
+//         if(root->val<low)
+//             help(root->right,low,high,sum);
+//         else if(root->val>high)
+//          help(root->left,low,high,sum);
+//         else
+//         {
+//              cout<<root->val<<" ";
+//             sum+=root->val;
+//             help(root->left,low,high,sum);
+//             help(root->right,low,high,sum);
+//         }            
+//     }
+//     int rangeSumBST(TreeNode* root, int low, int high) {
+//         int sum=0;
+//         help(root,low,high,sum);
+//         return sum;
+//     }
+// };
 class Solution {
 public:
-    void help(TreeNode *root,int low,int high,int &sum)
-    {
-        if(root==NULL)
-            return;
-        if(root->val<low)
-            help(root->right,low,high,sum);
-        else if(root->val>high)
-         help(root->left,low,high,sum);
-        else
-        {
-             cout<<root->val<<" ";
-            sum+=root->val;
-            help(root->left,low,high,sum);
-            help(root->right,low,high,sum);
-        }
-       
-            
-    }
     int rangeSumBST(TreeNode* root, int low, int high) {
-        int sum=0;
-        help(root,low,high,sum);
-        return sum;
+        if( root == NULL ){
+            return 0;
+        }
+        if( root->val > high ){
+            return rangeSumBST(root->left, low, high);
+        }
+        else if( root->val < low ){
+            return rangeSumBST(root->right, low, high);
+        }
+        else{
+            return root->val + rangeSumBST(root->left, low, high) + rangeSumBST(root->right, low, high);
+        }
     }
 };
