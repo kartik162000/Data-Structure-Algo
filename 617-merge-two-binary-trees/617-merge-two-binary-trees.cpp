@@ -14,7 +14,7 @@ public:
     void func(TreeNode*root1,TreeNode*root2)
     {
          root1->val=root1->val+root2->val;
-        if (root1->left&&root2->left) func(root1->left,root2->left);
+        if (root1->left!=NULL&&root2->left!=NULL) func(root1->left,root2->left);
         if (root1->left==NULL) root1->left=root2->left;
         if (root1->right&&root2->right) func(root1->right,root2->right);
         if (root1->right==NULL) root1->right=root2->right;
