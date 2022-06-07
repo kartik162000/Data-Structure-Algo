@@ -12,9 +12,8 @@ while(i>=0 and j>=0){
      else
 	 {
 		 nums1[k--]=nums1[i--];       }
-    }
-	// if left over numbers.
-     while(j>=0) nums1[k--]=nums2[j--];
+    }  
+        while(j>=0) nums1[k--]=nums2[j--];
         
     }
 };
