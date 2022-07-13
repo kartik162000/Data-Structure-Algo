@@ -1,29 +1,26 @@
 class Solution {
 public:
     bool canBeIncreasing(vector<int>& nums) {
-        int count=0;
-        int r_index=-1;
+    vector<int> dp(nums.size(),1);
+        if(nums.size()==1)
+            return dp[0];
+        int maxx=0;
         for(int i=1;i<nums.size();i++)
         {
-            if(nums[i-1]>=nums[i])
+            int max_len=0;
+            for(int j=0;j<i;j++)
             {
-                count++;
-                r_index=i;
+                if(nums[i]>nums[j])
+                {
+                    max_len=max(max_len,dp[j]);
+                }
             }
+            dp[i]=max_len+1;
+            maxx=max(maxx,dp[i]);
         }
-        if(count>1)
-            return false;
-       if(count==0)
+       if(maxx==nums.size() || maxx==nums.size()-1)
            return true;
-        
-        if(r_index==nums.size()-1 ||r_index==1)
-            return true;
-      if (nums[r_index - 1] < nums[r_index + 1])
-        return true;
-    if(r_index-2>=0 && nums[r_index-2]<nums[r_index])
-        return true;
-    if(r_index<0)
-        return true;
         return false;
+
     }
 };
