@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void sortColors(vector<int>& arr) {
+   void sortColors(vector<int>& arr) {
         int i=0,j=0,k=arr.size()-1;
         while(j<=k)
         {
