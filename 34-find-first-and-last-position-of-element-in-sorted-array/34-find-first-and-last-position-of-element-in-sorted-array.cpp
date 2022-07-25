@@ -1,15 +1,40 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
+    int low=0;
+    int high=nums.size()-1;
+        vector<int> ans;
+        int a=-1;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(nums[mid]==target)
+            {
+                a=mid;
+               high=mid-1;
+            }
+            else if(nums[mid]<target)
+                low=mid+1;
+            else
+                high=mid-1;
+        }
+     low=0;
+     high=nums.size()-1;
+        int b=-1;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(nums[mid]==target)
+            {
+                b=mid;
+               low=mid+1;
+            }
+            else if(nums[mid]<target)
+                low=mid+1;
+            else
+                high=mid-1;
+        }   
         
-            int n=nums.size();
-        if(!binary_search(nums.begin(),nums.end(),target))
-            return {-1,-1};
-      auto low=lower_bound(nums.begin(),nums.end(),target);
-        vector<int> v;
-        v.push_back(low-nums.begin());
-      auto high=upper_bound(nums.begin(),nums.end(),target);
-        v.push_back(high-nums.begin()-1);
-        return v;
+        return {a,b};
     }
 };
