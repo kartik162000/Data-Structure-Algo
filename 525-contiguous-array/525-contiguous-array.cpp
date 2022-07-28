@@ -1,27 +1,25 @@
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
+        int maxs_len=0;
         int sum=0;
-        int maxs=0;
         map<int,int> mp;
         for(int i=0;i<nums.size();i++)
         {
-           if(nums[i]==0)
-               sum-=1;
+            if(nums[i]==0)
+                sum--;
             else
                 sum++;
             if(sum==0)
-                maxs=max(maxs,i+1);
+                maxs_len=max(maxs_len,i+1);
             else
             {
                 if(mp.find(sum)==mp.end())
-                {
-                    mp[sum]=i;
-                }
+                        mp[sum]=i;
                 else
-                    maxs=max(maxs,i-mp[sum]);
+                    maxs_len=max(maxs_len,i-mp[sum]);
             }
         }
-        return maxs;
+        return maxs_len;
     }
 };
