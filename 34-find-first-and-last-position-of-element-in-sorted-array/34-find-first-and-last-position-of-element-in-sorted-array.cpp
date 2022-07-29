@@ -8,15 +8,20 @@ public:
         while(low<=high)
         {
             int mid=(low+high)/2;
-            if(nums[mid]==target)
+            if(nums[mid]<target)
+                low=mid+1;
+            else if(nums[mid]>target)
+                high=mid-1;
+           else
+           {
+            if(mid==0 || nums[mid-1]!=nums[mid])
             {
                 a=mid;
-               high=mid-1;
-            }
-            else if(nums[mid]<target)
-                low=mid+1;
+                break;
+            }   
             else
                 high=mid-1;
+           }
         }
      low=0;
      high=nums.size()-1;
@@ -24,15 +29,21 @@ public:
         while(low<=high)
         {
             int mid=(low+high)/2;
-            if(nums[mid]==target)
-            {
-                b=mid;
-               low=mid+1;
-            }
-            else if(nums[mid]<target)
+            if(nums[mid]<target)
                 low=mid+1;
-            else
+            else if(nums[mid]>target)
                 high=mid-1;
+            else
+            {
+                if(mid==nums.size()-1|| nums[mid]!=nums[mid+1])
+                {
+                    b=mid;
+                    break;
+                }
+                else
+                    low=mid+1;
+            }
+            
         }   
         
         return {a,b};
