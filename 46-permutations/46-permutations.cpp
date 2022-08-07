@@ -18,6 +18,8 @@ public:
     }
     vector<vector<int>> permute(vector<int>& nums) {
     help(nums,0);
+    sort(vec.begin(), vec.end());
+    vec.erase(unique(vec.begin(), vec.end()), vec.end());
         return vec;
     }
 };
