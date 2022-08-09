@@ -10,14 +10,16 @@
  */
 class Solution {
 public:
-  ListNode* swapPairs(ListNode* head) {
-        if(!head or !head->next)
-            return head;
-        ListNode* first = head;
-        ListNode* second = head->next;
-        ListNode* rest = swapPairs(second->next);
-        second->next = first;
-        first->next = rest;
+    ListNode* swapPairs(ListNode* head) {
+     if(head==NULL || head->next==NULL)
+     {
+         return head;
+     }
+    ListNode*first=head;
+        ListNode*second=head->next;
+        ListNode*rest=swapPairs(second->next);
+        second->next=first;
+        first->next=rest;
         return second;
     }
 };
