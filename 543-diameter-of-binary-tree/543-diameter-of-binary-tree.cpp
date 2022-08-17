@@ -11,11 +11,10 @@
  */
 class Solution {
 public:
-        int res=0;
+    int res=0;
     int help(TreeNode* root)
     {
-        if(root==NULL)
-            return 0;
+        if(!root) return 0;
         int lft_ht=help(root->left);
         int rt_ht=help(root->right);
         res=max(res,lft_ht+rt_ht);
